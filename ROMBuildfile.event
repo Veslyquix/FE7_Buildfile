@@ -1,0 +1,20 @@
+#ifdef _FE7_
+    #include "EAstdlib.event"
+	#define FreeSpace 0x01000000
+	
+    ORG FreeSpace
+	
+    #include "Text/InstallTextData.event"
+    MESSAGE Used text space ends at currentOffset
+	#include "Patches/Installer.event"
+    MESSAGE Used hax space ends at currentOffset
+
+ALIGN 4
+WORD 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 // Prevent NUPS from cutting off the last 6 bytes
+
+
+	
+    MESSAGE Used free space ends at currentOffset
+#else
+    ERROR "You are not assembling FE7 events!"
+#endif
